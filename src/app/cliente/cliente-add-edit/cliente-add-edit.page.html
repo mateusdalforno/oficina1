@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro de CLIENTES</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding-top>
+  <form #form="ngForm" [formGroup]="clienteForm" (submit)="submit()">
+    <div>
+      <ng-container *ngFor="let validation of validationMessages.nome">
+        <div *ngIf="clienteForm.get('nome')?.hasError(validation.type)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+      <ng-container *ngFor="let validation of validationMessages.renda" >
+        <div *ngIf="clienteForm.get('renda')?.hasError(validation.type)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <!--<ion-list *ngIf="hasErrors" class="errors-summary">
+      <ion-label *ngFor="let errorMessage of errorMessage" class="errors-summary">
+        {{errorMessage}}<br/>
+      </ion-label>
+    </ion-list>-->
+    <ion-item no-padding>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input formControlName="nome" type="text" [class.invalid]="!clienteForm.controls['nome'].valid &&
+       clienteForm.controls['nome'].touched"></ion-input>
+      <!--<small class="error-message" *ngIf="(clienteForm.get('nome')?.errors?.['required'] ||
+        clienteForm.get('nome')?.errors?.['minlength'] ||
+        clienteForm.get('nome')?.errors?.['maxlength']) && form.submitted">
+          Informe o nome (3 a 50 caracteres)
+      </small>-->
+    </ion-item>
+
+    <ion-item no-padding>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+      <!--<small class="error-message" *ngIf="clienteForm.get('email')?.errors?.['required'] || clienteForm.get('email')?.errors?.['email']">
+        Informe um email válido
+      </small>-->
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label position="floating">Telefone</ion-label>
+      <ion-input formControlName="tel" type="text"></ion-input>
+      <!--<small class="error-message" *ngIf="clienteForm.get('tel')?.errors?.['required'] &&
+       (form.submitted || clienteForm.get('tel')?.touched)">
+        Informe o telefone 
+      </small>-->
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label position="floating">Renda</ion-label>
+      <ion-input formControlName="renda" type="number"></ion-input>
+      <!--<small class="error-message" *ngIf="clienteForm.get('renda')?.errors?.['required'] || clienteForm.get('renda')?.errors?.['min']">
+        Informe uma renda positiva
+      </small>-->
+    </ion-item>
+    <ion-item no-padding>
+     <ion-label position="floating">Nascimento</ion-label>
+      <ion-input  formControlName="nascimento" type="text" ></ion-input>
+      <!--<small class="error-message" *ngIf="clienteForm.get('nascimento')?.errors?.['required']">
+        Informe uma data de nascimento
+      </small>-->
+    </ion-item>
+
+    
+      
+
+
+   <!-- <ion-button fill="clear" class="ion-no-margin;ion-n
+          o-padding" id="open-modal">
+          <ion-icon icon="calendar"></ion-icon>
+           </ion-button>
+          <ion-modal trigger="open-modal">
+          <ng-template>
+            <ion-content>
+            </ion-content>
+          </ng-template>
+          </ion-modal>-->
+         
+    <ion-button shape="round" color="primary" expand="block" padding type="submit">
+      Confirmar
+    </ion-button>
+  </form>
+</ion-content>
+
+
+
+
+<!-- NOME --
+<small class="error-message" *ngIf="clienteForm.get('nome')?.errors?.['required'] ||
+ clienteForm.get('nome')?.errors?.['minlength'] || clienteForm.get('nome')?.errors?.['maxlength']">
+  Informe o nome (3 a 50 caracteres)
+</small>
+
+!-- EMAIL --
+<small class="error-message" *ngIf="clienteForm.get('email')?.errors?.['required'] ||
+ clienteForm.get('email')?.errors?.['email']">
+  Informe um email válido
+</small>
+
+
+!-- TELEFONE --
+<small class="error-message" *ngIf="clienteForm.get('telefone')?.errors?.['required']">
+  Informe o telefone 
+</small>
+
+!-- RENDA --
+<small class="error-message" *ngIf="clienteForm.get('renda')?.errors?.['required'] ||
+ clienteForm.get('renda')?.errors?.['min']">
+  Informe uma renda positiva
+</small>
+
+!-- NASCIMENTO --
+<small class="error-message" *ngIf="clienteForm.get('nascimento')?.errors?.['required']">
+  Informe uma data de nascimento
+</small>
+
+-->
